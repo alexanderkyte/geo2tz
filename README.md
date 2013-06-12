@@ -1,6 +1,8 @@
 # Geo2tz
 
-TODO: Write a gem description
+This gem enables you to find a timezone given a set of latitude and longitude.
+
+In order to do that It parses a list of all the cities from geonames.org and setup a Kdtree to find to closest city to your given coordinates and returns the associated timezone.
 
 ## Installation
 
@@ -18,7 +20,24 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+In order to work this gem needs to download, parse and store a file from geonames.org. It therefore needs to store that file somewhere. you need to specify a writable directory where It can write to.
+
+	# config/initializers/geo2tz.rb
+	Geo2tz.configure(
+	  :writable_directory => '/myproject/files,
+	  :filename => 'geo2tz.db' # Optional,
+	  :geoname_url => 'http://download.geonames.org/export/dump/cities1000.zip',
+	  :geoname_filename => 'cities1000.txt'
+	)
+
+To setup your cities database file.
+
+	Geo2tz::Updater.new
+
+To search use the lat_long method
+
+	Geo2tz::Search.lat_long(-18,31)
+	=> (GMT+02:00) Africa/Harare
 
 ## Contributing
 
