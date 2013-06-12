@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Geo2tz::VERSION
   spec.authors       = ["Christophe Verbinnen"]
   spec.email         = ["djpate@gmail.com"]
-  spec.description   = "Find Timezone from lat long"
-  spec.summary       = "Find Timezone from lat long"
-  spec.homepage      = ""
+  spec.description   = "Get a ActiveSupport/Timezone from a given lat long"
+  spec.summary       = "In order to do that It parses a list of all the cities from geonames.org and setup a Kdtree to find to closest city to your given coordinates and returns the associated timezone."
+  spec.homepage      = "https://github.com/djpate/geo2tz"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
