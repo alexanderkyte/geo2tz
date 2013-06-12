@@ -14,7 +14,7 @@ module Geo2tz
 
     def self.setup_tree
       points = []
-      File.open("#{Geo2tz.config[:writable_directory]}/#{Geo2tz.config[:filename]}").each do |line|
+      File.open(File.join(Geo2tz.config[:writable_directory],Geo2tz.config[:filename])).each do |line|
         data = line.split(',')
         tz = data[2].strip
         unless MAP.has_key? tz

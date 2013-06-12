@@ -29,15 +29,17 @@ module Geo2tz
         line_data = line.split("\t")
         @parsed_cities << {:lat => line_data[4], :long => line_data[5], :tz => line_data[17]}
       end
+      @unparsed_cities = nil # dont need it anymore, let's free up some memory
       true
     end
 
     def write_file
-      File.open("#{Geo2tz.config[:writable_directory]}/#{Geo2tz.config[:filename]}", 'w') do |file|
+      File.open(File.join(Geo2tz.config[:writable_directory],Geo2tz.config[:filename]), 'w') do |file|
         @parsed_cities.each do |city|
           file.write("#{city[:lat]},#{city[:long]},#{city[:tz]}\n")
         end
       end
+      @parsed_cities = nil# dont need it anymore, let's free up some memory
       true
     end
 
